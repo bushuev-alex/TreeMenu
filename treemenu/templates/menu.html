@@ -1,0 +1,12 @@
+{% load common_tags %}
+
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" id="dropdown03" data-bs-toggle="dropdown"  href="/{{ origin_node.url }}/">{{ origin_node.name }}</a>
+    <ul class="dropdown-menu">
+        {% get_child_nodes origin_node target_node %}
+    </ul>
+</li>
+
+
+

@@ -1,0 +1,7 @@
+{% load common_tags %}
+
+{% for node in nodes %}
+<ul>
+    <li><a href="/{{ node.url }}/">{{ node.name }}</a></li>
+</ul>
+{% endfor %}

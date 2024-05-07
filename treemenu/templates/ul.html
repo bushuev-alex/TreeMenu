@@ -1,0 +1,17 @@
+{% load common_tags %}
+
+{% for node in nodes %}
+<ul>
+
+    {% if node == target_node %}
+        <li><a href="/{{ node.url }}/"><b>{{ node.name }}</b></a></li>
+        {% get_child_nodes_stop node %}
+    {% elif node != target_node %}
+        {% if node in parents or node.parent in parents or not node.parent.parent %}
+            <li><a href="/{{ node.url }}/">{{ node.name }}</a></li>
+            {% get_child_nodes node target_node %}
+        {% endif %}
+    {% endif %}
+
+</ul>
+{% endfor %}
