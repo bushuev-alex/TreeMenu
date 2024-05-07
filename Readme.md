@@ -24,36 +24,35 @@
 
 ### Перед запуском выполните:
 * Склонировать репозиторий в локальную директорию:\
-  git clone git@github.com:bushuev-alex/TreeMenu.git\
+  ```git clone git@github.com:bushuev-alex/TreeMenu.git```\
   или через https\
-  git clone https://github.com/bushuev-alex/TreeMenu.git
+  ```git clone https://github.com/bushuev-alex/TreeMenu.git```
 
 
 * Активация виртуального окружения и создание зависимостей:\
-  python3.11 -m venv venv\
-  pip install -r requirements.txt
+  ```python3.11 -m venv venv```\
+  ```pip install -r requirements.txt```
 
 
-* В корне проекта создайте ```.env``` и задайте значения переменных:\
-  DJANGO_SECRET_KEY=\
-  DB_NAME=\
-  DB_USER=\
-  DB_PASSWORD=\
-  DB_HOST=\
-  DB_PORT=
+* В корне Django-проекта (первая папка ```treemenu```) создайте ```.env``` и задайте значения переменных:\
+  ```DJANGO_SECRET_KEY```=\
+  ```DB_NAME```=\
+  ```DB_USER```=\
+  ```DB_PASSWORD```=\
+  ```DB_HOST```=\
+  ```DB_PORT```=
 
 
-* Создайте базу данных и дайте привилегии для пользователя {DB_USER}:\
-  sudo -i -u postgres\
-  psql\
-  CREATE DATABASE {DB_NAME};\
-  GRANT ALL PRIVILEGES ON DATABASE {DB_NAME} to {DB_USER};\
-  GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO {DB_USER};\
-  GRANT ALL ON SCHEMA public TO postgres;
+* Создайте базу данных ```DB_NAME``` и дайте привилегии для пользователя ```DB_USER```:\
+  ```sudo -i -u postgres```\
+  ```psql```\
+  ```CREATE DATABASE``` ```DB_NAME```;\
+  ```GRANT ALL PRIVILEGES ON DATABASE``` ```DB_NAME``` to ```DB_USER```;\
+  ```GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO``` ```DB_USER```;\
+  ```GRANT ALL ON SCHEMA public TO postgres```;
 
 
 * Cоздание администратора и миграций, а также их применение:\
-  python manage.py makemigrations\
-  python manage.py migrate\
-  python manage.py createsuperuser
-
+  ```python manage.py makemigrations```\
+  ```python manage.py migrate```\
+  ```python manage.py createsuperuser```
