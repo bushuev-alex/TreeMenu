@@ -1,15 +1,16 @@
 {% load common_tags %}
 
-{% for node in nodes %}
+{% for node in nodes %}  <!-- цикл итерации по детям элемента меню -->
 <ul>
 
-    {% if node == target_node %}
-        <li><a href="/{{ node.url }}/"><b>{{ node.name }}</b></a></li>
-        {% get_child_nodes_stop node %}
+    {% if node == target_node %}  <!-- если меню соответствует искомому -->
+        <li><a href="/{{ node.url }}/"><b>{{ node.name }}</b></a></li>  <!-- выводим жирным шрифтом элемент меню -->
+        {% get_child_nodes_stop node %}  <!-- выводим его детей и останавливаем поиск -->
     {% elif node != target_node %}
-        {% if node in parents or node.parent in parents or not node.parent.parent %}
-            <li><a href="/{{ node.url }}/">{{ node.name }}</a></li>
-            {% get_child_nodes node target_node %}
+        {% if node in parents or node.parent in parents or not node.parent.parent %} <!-- если меню не соответствует -->
+            <li><a href="/{{ node.url }}/">{{ node.name }}</a></li> <!-- выводим обычным шрифтом элемент меню -->
+            {% get_child_nodes node target_node %}  <!-- ищем дальше по вложенным элементам только того меню,
+                                                            который является его родителем -->
         {% endif %}
     {% endif %}
 
