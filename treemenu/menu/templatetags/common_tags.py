@@ -5,10 +5,10 @@ from pprint import pprint
 
 
 @register.inclusion_tag('menu.html', takes_context=True)
-def draw_menu(context):
+def draw_menu(context, menu_name: str):
     path = context.request.path[1:-1]
     path = 'menu' if path == 'base' else path
-    nodes = MenuItem.objects.with_tree_fields()
+    nodes = MenuItem.objects.filter(menu__name=menu_name).with_tree_fields()
     origin_node = nodes.first()
     target_node = nodes.get(url=path)
     return {"origin_node": origin_node,
